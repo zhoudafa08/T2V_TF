@@ -31,8 +31,8 @@ warnings.filterwarnings('ignore')
 os.environ['CUDA_VISIBLE_DEVICES'] = "1"
 
 def data():
-    X = np.load('/NFSHOME/fzhou/stock_project/results/a50_feats_pca10_wnd5.npy') 
-    Y = np.load('/NFSHOME/fzhou/stock_project/results/a50_labels_pca10_wnd5.npy') 
+    X = np.load('../data/a50_feats_pca10_wnd5.npy') 
+    Y = np.load('../data/a50_labels_pca10_wnd5.npy') 
     print(X.shape, Y.shape)
     train_num = int(0.7*X.shape[0])
     val_num = int(0.2*X.shape[0])
@@ -144,7 +144,7 @@ if __name__ == '__main__':
     weights = weights.set_index('code')
     mask = np.zeros((gt.shape[0], 1))
     id = 0
-    with open("../results/code_list", "r") as f:
+    with open("../data/code_list", "r") as f:
         for line in f.readlines():
             line = line.strip('\n').split(',')
             code = ''.join(line)
