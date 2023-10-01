@@ -73,7 +73,8 @@ def create_model(x_train, y_train, x_val, y_val, x_test, y_test, old_loss=10):
     attn_layer4 = TransformerEncoder({{choice([8,16,32,64])}},{{choice([8,16,32,64])}},{{choice([4,6,8])}},{{choice([8,16,32,64])}})
   
     '''Construct model'''
-    in_seq = Input(shape=(seq_len, 5))
+    #in_seq = Input(shape=(seq_len, 5))
+    in_seq = Input(shape(45, 5, 28)) # the values of the parameters S, T and F that appear in Algorithm 3 of the reference "T2V_TF: ..." are 45, 5, and 28, respectively.
     x = time_embedding(in_seq)
     x = Concatenate(axis=-1)([in_seq, x])
     x = attn_layer1((x, x, x))
