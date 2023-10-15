@@ -80,7 +80,7 @@ def create_model(x_train, y_train, x_val, y_val, x_test, y_test, old_loss=10):
     x = attn_layer1((x, x, x))
     x = attn_layer2((x, x, x))
     x = attn_layer3((x, x, x))
-    x = tf.reduce_mean(x, -1)
+    x = tf.reduce_mean(x, -2)
     x = Dropout({{uniform(0,1)}})(x)
     x = Dense({{choice([32, 48, 64, 96])}}, activation='relu')(x)
     x = BatchNormalization()(x)
